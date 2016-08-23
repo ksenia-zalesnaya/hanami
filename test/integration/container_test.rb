@@ -36,11 +36,16 @@ describe Hanami::Container do
     get '/back/users'
     response.status.must_equal 200
     response.body.must_equal 'hello from Back users endpoint'
+
+    get '/front/faq'
+    response.status.must_equal 200
+    response.body.must_equal 'hello from Faq'
   end
 
   it 'print correct routes' do
     matches = [
       'GET, HEAD  /front/home                    Front::Controllers::Home::Show',
+      'GET, HEAD  /front/faq                     Front::Controllers::FAQ::Index',
       'GET, HEAD  /back/home                     Back::Controllers::Home::Show',
       'GET, HEAD  /back/users                    Back::Controllers::Users::Index'
     ]

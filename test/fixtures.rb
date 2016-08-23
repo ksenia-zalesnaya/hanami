@@ -328,6 +328,7 @@ module Front
     configure do
       routes do
         get '/home', to: 'home#show', as: :home
+        resources :faq, only: :index
       end
     end
   end
@@ -339,6 +340,16 @@ module Front
 
         def call(params)
           self.body = 'hello Front'
+        end
+      end
+    end
+
+    module FAQ
+      class Index
+        include Hanami::Action
+
+        def call(params)
+          self.body = 'hello from Faq'
         end
       end
     end
